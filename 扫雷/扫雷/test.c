@@ -37,7 +37,7 @@ void Init(char show_map[MAX_ROW][MAX_COL], char mine_map[MAX_ROW][MAX_COL]) {		/
 		if (mine_map[row][col] == '1') {
 			continue;
 		}
-		mine_map[row][col] = '1';
+		mine_map[row][col] = 'x';
 		--n;
 	}
 }
@@ -62,42 +62,42 @@ void UpdateShowMap(int row, int col, char show_map[MAX_ROW][MAX_COL],
 	int count = 0;
 	if (row - 1 >= 0 && col - 1 >= 0
 		&& row - 1 < MAX_ROW && col - 1 < MAX_COL
-		&& mine_map[row - 1][col - 1] == '1') {
+		&& mine_map[row - 1][col - 1] == 'x') {
 		++count;
 	}
 	if (row - 1 >= 0 && col >= 0
 		&& row - 1 < MAX_ROW && col < MAX_COL
-		&& mine_map[row - 1][col] == '1') {
+		&& mine_map[row - 1][col] == 'x') {
 		++count;
 	}
 	if (row - 1 >= 0 && col + 1 >= 0
 		&& row - 1 < MAX_ROW && col + 1 < MAX_COL
-		&& mine_map[row - 1][col + 1] == '1') {
+		&& mine_map[row - 1][col + 1] == 'x') {
 		++count;
 	}
 	if (row >= 0 && col - 1 >= 0
 		&& row < MAX_ROW && col - 1 < MAX_COL
-		&& mine_map[row][col - 1] == '1') {
+		&& mine_map[row][col - 1] == 'x') {
 		++count;
 	}
 	if (row >= 0 && col + 1 >= 0
 		&& row < MAX_ROW && col + 1 < MAX_COL
-		&& mine_map[row][col + 1] == '1') {
+		&& mine_map[row][col + 1] == 'x') {
 		++count;
 	}
 	if (row + 1 >= 0 && col - 1 >= 0
 		&& row + 1 < MAX_ROW && col - 1 < MAX_COL
-		&& mine_map[row + 1][col - 1] == '1') {
+		&& mine_map[row + 1][col - 1] == 'x') {
 		++count;
 	}
 	if (row + 1 >= 0 && col >= 0
 		&& row + 1 < MAX_ROW && col < MAX_COL
-		&& mine_map[row + 1][col] == '1') {
+		&& mine_map[row + 1][col] == 'x') {
 		++count;
 	}
 	if (row + 1 >= 0 && col + 1 >= 0
 		&& row + 1 < MAX_ROW && col + 1 < MAX_COL
-		&& mine_map[row + 1][col + 1] == '1') {
+		&& mine_map[row + 1][col + 1] == 'x') {
 		++count;
 	}
 	show_map[row][col] = '0' + count;
@@ -123,8 +123,8 @@ void Game() {
 			printf("您输入的坐标已经翻开了!\n");
 			continue;
 		}
-		if (mine_map[row][col] == '1') {
-			printf("游戏结束!\n");
+		if (mine_map[row][col] == 'x') {
+			printf("GameOver!\n");
 			PrintMap(mine_map);
 			break;
 		}
